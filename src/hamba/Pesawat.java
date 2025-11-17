@@ -59,6 +59,8 @@ public class Pesawat extends javax.swing.JFrame {
         btnBayar = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
         btnKeluar = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,8 +123,11 @@ public class Pesawat extends javax.swing.JFrame {
 
         jLabel9.setText("Discount");
 
+        Diskon.setEnabled(false);
+
         jLabel10.setText("Total Harga Tiket");
 
+        TotalHarga.setEnabled(false);
         TotalHarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TotalHargaActionPerformed(evt);
@@ -144,6 +149,7 @@ public class Pesawat extends javax.swing.JFrame {
         buttonGroup2.add(Radiokredit);
         Radiokredit.setText("Kartu Kredit");
 
+        Potongan.setEnabled(false);
         Potongan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PotonganActionPerformed(evt);
@@ -151,6 +157,8 @@ public class Pesawat extends javax.swing.JFrame {
         });
 
         jLabel13.setText("Harga Yang Harus Dibayar");
+
+        HargaBayar.setEnabled(false);
 
         btnHarga.setText("JUMLAH HARGA");
         btnHarga.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +168,11 @@ public class Pesawat extends javax.swing.JFrame {
         });
 
         btnBayar.setText("HARGA BAYAR");
+        btnBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarActionPerformed(evt);
+            }
+        });
 
         btnHapus.setText("HAPUS");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -175,28 +188,37 @@ public class Pesawat extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setText("Rp");
+
+        jLabel15.setText("Rp");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(boxpesawat, 0, 91, Short.MAX_VALUE)
-                                    .addComponent(txtRoute)
-                                    .addComponent(etHarga)
-                                    .addComponent(etBeli)
-                                    .addComponent(etJumlahH))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(boxpesawat, 0, 91, Short.MAX_VALUE)
+                                .addComponent(txtRoute)
+                                .addComponent(etHarga)
+                                .addComponent(etBeli)
+                                .addComponent(etJumlahH))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
@@ -213,11 +235,11 @@ public class Pesawat extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Potongan)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel11)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(HargaBayar)))
+                                                .addGap(0, 27, Short.MAX_VALUE))
+                                            .addComponent(HargaBayar)
+                                            .addComponent(Potongan)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(4, 4, 4)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +286,8 @@ public class Pesawat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -280,7 +303,8 @@ public class Pesawat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etJumlahH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Diskon))
+                    .addComponent(Diskon)
+                    .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -288,11 +312,12 @@ public class Pesawat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Potongan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(Radiocash)
-                    .addComponent(Potongan, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(Radiocash))
+                .addGap(9, 9, 9)
                 .addComponent(Radiokredit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -315,37 +340,50 @@ public class Pesawat extends javax.swing.JFrame {
     }//GEN-LAST:event_etJumlahHActionPerformed
 
     private void btnHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHargaActionPerformed
-        String jumlah = etBeli.getText();
-        int jumlah = jumlah;
-        int harga = etHarga.getText();
-        int total harga = jumlah * harga;
-        etJumlahH.setText(total);
+        String jumlahh = etBeli.getText();
+        String hargaa = etHarga.getText();
+        int jumlah = Integer.parseInt(jumlahh);
+        int harga = Integer.parseInt(hargaa);
+        int total;
+        if (Radiosejalan.isSelected()) {
+            total = jumlah * harga;
+            String totalH = String.valueOf(total);
+            Diskon.setText("0%");
+            etJumlahH.setText(totalH);
+            TotalHarga.setText(totalH);
+        } else if (Radiopp.isSelected()) {
+            total = jumlah * harga * 2;
+            String totalH = String.valueOf(total);
+            Diskon.setText("10%");
+            etJumlahH.setText(totalH);
+            TotalHarga.setText(totalH);
+        }
     }//GEN-LAST:event_btnHargaActionPerformed
 
     private void boxpesawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxpesawatActionPerformed
-        if (boxpesawat.getSelectedItem()=="Silahkan Pilih"){
+        if (boxpesawat.getSelectedItem() == "Silahkan Pilih") {
             txtRoute.setText("");
             etHarga.setText("");
-        } else if(boxpesawat.getSelectedItem()=="GARUDA"){
+        } else if (boxpesawat.getSelectedItem() == "GARUDA") {
             txtRoute.setText("JKT - BALI");
-            etHarga.setText("Rp 1.000.000");
-        }else if(boxpesawat.getSelectedItem()=="MERPATI"){
+            etHarga.setText("1000000");
+        } else if (boxpesawat.getSelectedItem() == "MERPATI") {
             txtRoute.setText("JKT - LOMBOK");
-            etHarga.setText("Rp 800.000");
-        }else if(boxpesawat.getSelectedItem()=="MANDALA"){
+            etHarga.setText("800000");
+        } else if (boxpesawat.getSelectedItem() == "MANDALA") {
             txtRoute.setText("JKT - JATIM");
-            etHarga.setText("Rp 700.000");
-        }else if(boxpesawat.getSelectedItem()=="LION"){
+            etHarga.setText("700000");
+        } else if (boxpesawat.getSelectedItem() == "LION") {
             txtRoute.setText("JKT - MEDAN");
-            etHarga.setText("Rp 500.000");
-        }else if(boxpesawat.getSelectedItem()=="SEMPATI"){
+            etHarga.setText("500000");
+        } else if (boxpesawat.getSelectedItem() == "SEMPATI") {
             txtRoute.setText("JKT - RIAU");
-            etHarga.setText("Rp 850.000");
+            etHarga.setText("850000");
         }
     }//GEN-LAST:event_boxpesawatActionPerformed
 
     private void etBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etBeliActionPerformed
-        
+
     }//GEN-LAST:event_etBeliActionPerformed
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
@@ -370,16 +408,41 @@ public class Pesawat extends javax.swing.JFrame {
     }//GEN-LAST:event_PotonganActionPerformed
 
     private void RadiosejalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadiosejalanActionPerformed
-        // TODO add your handling code here:
+        etBeli.setText("");
+        etJumlahH.setText("");
+        Diskon.setText("");
+        TotalHarga.setText("");
+        Potongan.setText("");
+        HargaBayar.setText("");
     }//GEN-LAST:event_RadiosejalanActionPerformed
 
     private void RadioppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioppActionPerformed
-        // TODO add your handling code here:
+        etBeli.setText("");
+        etJumlahH.setText("");
+        Diskon.setText("");
+        TotalHarga.setText("");
+        Potongan.setText("");
+        HargaBayar.setText("");
     }//GEN-LAST:event_RadioppActionPerformed
 
     private void RadiocashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadiocashActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RadiocashActionPerformed
+
+    private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
+        int total = Integer.parseInt(TotalHarga.getText());
+        int potongan;
+        int jumlah;
+        if (Radiosejalan.isSelected()) {
+            Potongan.setText("0");
+            HargaBayar.setText(String.valueOf(total));
+        } else if (Radiopp.isSelected()) {
+            potongan = total / 10;
+            Potongan.setText(String.valueOf(potongan));
+            jumlah = total - potongan;
+            HargaBayar.setText(String.valueOf(jumlah));
+        }
+    }//GEN-LAST:event_btnBayarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,6 +503,8 @@ public class Pesawat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
